@@ -24,8 +24,7 @@ public class SwipeToDo extends View {
     private int mCenterCircleRadius;
     private int mLeftAndRightCirclesRadius;
 
-    private OnSwipeToLeftCircle mOnSwipeToLeftCircle;
-    private OnSwipeToRightCircle mOnSwipeToRightCircle;
+    private OnSwipeToDo mOnSwipeToDo;
 
     public SwipeToDo(Context context) {
         super(context);
@@ -69,9 +68,9 @@ public class SwipeToDo extends View {
             case MotionEvent.ACTION_UP:
                 if (mIsOnTouch) {
                     if (isTouchLeftCircle()) {
-                        mOnSwipeToLeftCircle.onSwipe(this, event);
+                        mOnSwipeToDo.onSwipeToLeft(this, event);
                     } else if (isTouchRightCircle()) {
-                        mOnSwipeToRightCircle.onSwipe(this, event);
+                        mOnSwipeToDo.onSwipeToRight(this, event);
                     }
                 }
                 mIsOnTouch = false;
@@ -141,19 +140,12 @@ public class SwipeToDo extends View {
         return false;
     }
 
-    public void setOnSwipeToLeftCircle(OnSwipeToLeftCircle onSwipeToLeftCircle) {
-        mOnSwipeToLeftCircle = onSwipeToLeftCircle;
+    public void setOnSwipeToDo(OnSwipeToDo onSwipeToDo) {
+        mOnSwipeToDo = onSwipeToDo;
     }
 
-    public interface OnSwipeToLeftCircle {
-        boolean onSwipe(View v, MotionEvent event);
-    }
-
-    public void setOnSwipeToRightCircle(OnSwipeToRightCircle onSwipeToRightCircle) {
-        mOnSwipeToRightCircle = onSwipeToRightCircle;
-    }
-
-    public interface OnSwipeToRightCircle {
-        boolean onSwipe(View v, MotionEvent event);
+    public interface OnSwipeToDo {
+        boolean onSwipeToLeft(View v, MotionEvent event);
+        boolean onSwipeToRight(View v, MotionEvent event);
     }
 }

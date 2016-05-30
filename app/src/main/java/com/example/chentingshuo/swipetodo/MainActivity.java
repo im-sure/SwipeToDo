@@ -14,17 +14,16 @@ public class MainActivity extends Activity {
         SwipeToDo swipeToDo = new SwipeToDo(this);
         swipeToDo.setBackgroundColor(getResources().getColor(R.color.cyan_dark));
         setContentView(swipeToDo);
-        swipeToDo.setOnSwipeToLeftCircle(new SwipeToDo.OnSwipeToLeftCircle() {
+        swipeToDo.setOnSwipeToDo(new SwipeToDo.OnSwipeToDo() {
             @Override
-            public boolean onSwipe(View v, MotionEvent event) {
-                Toast.makeText(MainActivity.this, "OnSwipeToLeftCircle", Toast.LENGTH_SHORT).show();
+            public boolean onSwipeToLeft(View v, MotionEvent event) {
+                Toast.makeText(MainActivity.this, "OnSwipeToLeft", Toast.LENGTH_SHORT).show();
                 return false;
             }
-        });
-        swipeToDo.setOnSwipeToRightCircle(new SwipeToDo.OnSwipeToRightCircle() {
+
             @Override
-            public boolean onSwipe(View v, MotionEvent event) {
-                Toast.makeText(MainActivity.this, "OnSwipeToRightCircle", Toast.LENGTH_SHORT).show();
+            public boolean onSwipeToRight(View v, MotionEvent event) {
+                Toast.makeText(MainActivity.this, "OnSwipeToRight", Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
